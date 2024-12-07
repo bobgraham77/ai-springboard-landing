@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes buttonGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeAndSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@layer utilities {
+  .animate-button-gradient {
+    background-size: 200% 200%;
+    animation: buttonGradient 5s ease infinite;
+  }
+  .animate-fade-slide-up {
+    animation: fadeAndSlideUp 1s ease-out forwards;
+    opacity: 0;
+  }
+}
+
+/* Mobile-first responsive typography */
+@media screen and (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+  
+  h1 {
+    font-size: 3rem;
+  }
+  
+  .btn {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  html {
+    font-size: 18px;
+  }
+  
+  h1 {
+    font-size: 4rem;
+  }
+  
+  .btn {
+    padding: 1rem 2rem;
+  }
+}
+
+/* Styles de focus accessibles */
+.keyboard-navigation *:focus {
+  @apply outline-2 outline-offset-2 outline-tech-primary-500 dark:outline-dark-tech-primary-200;
+  transition: outline-offset 0.2s ease;
+}
+
+/* Réinitialisation des styles de focus par défaut pour les interactions souris */
+*:not(.keyboard-navigation) *:focus {
+  outline: none;
+}
+
+/* Styles de sélection personnalisés */
+::selection {
+  @apply bg-tech-primary-100 text-tech-primary-700 dark:bg-dark-tech-primary-100 dark:text-dark-tech-primary-700;
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+  @apply w-2 bg-tech-neutral-50 dark:bg-dark-tech-neutral-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-tech-neutral-200 rounded-full dark:bg-dark-tech-neutral-200;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-tech-neutral-100 dark:bg-dark-tech-neutral-200;
+}
+
+/* Styles de transition globaux */
+html {
+  scroll-behavior: smooth;
+  @apply transition-colors duration-300 ease-in-out;
+}
+
+body {
+  @apply antialiased text-tech-neutral-700 dark:text-dark-text-primary bg-white dark:bg-dark-bg-primary;
+}
